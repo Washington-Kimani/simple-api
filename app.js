@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/products', (req, res) => {
     const products = collection.find();
-    res.json(products);
+    res.send(products);
 })
 
 app.get('/api/product/:id', (req, res) => {
@@ -48,7 +48,7 @@ app.post('/api/add-product', (req, res) => {
     })
 
     data.save().then(() => {
-        res.status(200).json(data);
+        res.status(200).send(data);
     })
 
 })
