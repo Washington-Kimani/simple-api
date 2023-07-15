@@ -28,20 +28,20 @@ app.get('/', (req, res) => {
     res.send(`Hello Amigo`)
 })
 
-app.get('/api/products', async (req, res) => {
-    const products = await collection.find();
+app.get('/api/products', (req, res) => {
+    const products = collection.find();
     res.json(products);
 })
 
-app.get('/api/product/:id', async (req, res) => {
-    const product = await collection.findOne({
+app.get('/api/product/:id', (req, res) => {
+    const product = collection.findOne({
         _id: req.params.id
     })
     res.send(product);
 })
 
-app.post('/api/add-product', async (req, res) => {
-    const data = new collection ({
+app.post('/api/add-product', (req, res) => {
+    const data = new collection({
         name: req.body.name,
         description: req.body.description,
         price: req.body.price
